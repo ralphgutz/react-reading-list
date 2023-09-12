@@ -1,15 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Wrapper from './components/Wrapper';
 
 function App() {
   return (
-    <div className="App">
-      <div>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-      </div>
+    <div className='App'>
+      <Wrapper />
     </div>
   );
 }
