@@ -1,16 +1,21 @@
 import { title } from 'process';
 import React, { useState } from 'react';
 
-const Form = (): any => {
-  interface Book {
-    title: string;
-    author: string;
-  };
+interface Book {
+  title: string;  
+  author: string;
+};
 
+interface FormProps {
+  addBook: (book: Book) => void;
+}
+
+const Form: React.FC<FormProps> = ({addBook}) => {
   const [book, setBook] = useState<Book>({ title: '', author: '' });
 
   const handleTitleChange = (e: React.ChangeEvent<any>) => {
     setBook({...book, title: e.target.value});
+    
   }
 
   const handleAuthorChange = (e: React.ChangeEvent<any>) => {
@@ -20,8 +25,9 @@ const Form = (): any => {
   const handleSubmit = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
 
-    console.log(book.author);
-    console.log(book.title);
+    if (book.title.length >= 1 && book.author.length >= 1) {
+      addBook(book);
+    }
 
     setBook({title: '', author: ''});
   }
@@ -36,7 +42,7 @@ const Form = (): any => {
           <input type='text' className='w-full text-gray-700 border border-gray-500 py-3 px-4 mb-3 leading-tight' placeholder='Author'  value={book.author} onChange={handleAuthorChange} />
         </div>
         <div className='my-3 text-left'>
-          <button className='bg-orange-500 hover:bg-orange-700 text-white py-2 px-4 rounded-full'>Create</button>
+          <button className='w-1/3 bg-orange-500 hover:bg-orange-700 text-white py-2 rounded-full'>Create</button>
         </div>
       </form>
     </div>
