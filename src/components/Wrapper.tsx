@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Form from './Form';
 import Card from './Card';
 
-const Wrapper: React.FC = () => {
+export default function Wrapper() {
   interface Book {
     title: string;
     author: string;
@@ -21,11 +21,11 @@ const Wrapper: React.FC = () => {
   };
 
   return (
-    <div className='Wrapper'>
+    <>
       <div className='bg-blue-500 p-4 mb-5'>
         <h1 className='text-2xl text-white'>My Reading List</h1>
       </div>
-      <div className=''>
+      <div>
         <div className='flex justify-center items-center'>
           <div className='flex-col'>
             {books.map((book, index) => (
@@ -36,9 +36,6 @@ const Wrapper: React.FC = () => {
         </div>  
         <Form addBook={addBook}/>
       </div>
-      
-    </div>
+    </>
   );
 }
-
-export default Wrapper;
